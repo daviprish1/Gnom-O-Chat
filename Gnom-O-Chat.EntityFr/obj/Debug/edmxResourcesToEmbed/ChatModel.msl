@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище C18_sdiModelContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="Chat">
+      <EntityTypeMapping TypeName="C18_sdiModel.Chat">
+        <MappingFragment StoreEntitySet="Chat">
+          <ScalarProperty Name="IdChat" ColumnName="IdChat" />
+          <ScalarProperty Name="ChatTitle" ColumnName="ChatTitle" />
+          <ScalarProperty Name="IsWhisper" ColumnName="IsWhisper" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatConnections">
+      <EntityTypeMapping TypeName="C18_sdiModel.ChatConnections">
+        <MappingFragment StoreEntitySet="ChatConnections">
+          <ScalarProperty Name="IdConnection" ColumnName="IdConnection" />
+          <ScalarProperty Name="ConnectionDate" ColumnName="ConnectionDate" />
+          <ScalarProperty Name="IdUser_ChatUser" ColumnName="IdUser_ChatUser" />
+          <ScalarProperty Name="IsLogin" ColumnName="IsLogin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatMembership">
+      <EntityTypeMapping TypeName="C18_sdiModel.ChatMembership">
+        <MappingFragment StoreEntitySet="ChatMembership">
+          <ScalarProperty Name="IdChat_Chat" ColumnName="IdChat_Chat" />
+          <ScalarProperty Name="IdUser_ChatUser" ColumnName="IdUser_ChatUser" />
+          <ScalarProperty Name="IdChatMembership" ColumnName="IdChatMembership" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatUser">
+      <EntityTypeMapping TypeName="C18_sdiModel.ChatUser">
+        <MappingFragment StoreEntitySet="ChatUser">
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="IsMod" ColumnName="IsMod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="History">
+      <EntityTypeMapping TypeName="C18_sdiModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
+          <ScalarProperty Name="IdUser_ChatUser" ColumnName="IdUser_ChatUser" />
+          <ScalarProperty Name="IdChat_Chat" ColumnName="IdChat_Chat" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreateNormalUser" FunctionName="Хранилище C18_sdiModel.CreateNormalUser" />
+    <FunctionImportMapping FunctionImportName="InsertIntoMainNewBeeUser" FunctionName="Хранилище C18_sdiModel.InsertIntoMainNewBeeUser" />
+  </EntityContainerMapping>
+</Mapping>

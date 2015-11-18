@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnom-O-Chat.UI", "Gnom-O-Chat\Gnom-O-Chat.UI.csproj", "{6E1B76BA-C427-4D67-8623-CE395D9C492B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnom-O-Chat.EntityFr", "Gnom-O-Chat.EntityFr\Gnom-O-Chat.EntityFr.csproj", "{C1994BF8-E204-4AF7-8B55-3CDFFFEEE613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnom-O-Chat.DAL", "Gnom-O-Chat.DAL\Gnom-O-Chat.DAL.csproj", "{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E1B76BA-C427-4D67-8623-CE395D9C492B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1B76BA-C427-4D67-8623-CE395D9C492B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1B76BA-C427-4D67-8623-CE395D9C492B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1B76BA-C427-4D67-8623-CE395D9C492B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1994BF8-E204-4AF7-8B55-3CDFFFEEE613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1994BF8-E204-4AF7-8B55-3CDFFFEEE613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1994BF8-E204-4AF7-8B55-3CDFFFEEE613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1994BF8-E204-4AF7-8B55-3CDFFFEEE613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

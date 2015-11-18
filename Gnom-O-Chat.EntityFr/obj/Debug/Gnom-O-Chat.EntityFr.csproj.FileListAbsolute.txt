@@ -1,0 +1,10 @@
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\Gnom-O-Chat.EntityFr.dll.config
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\Gnom-O-Chat.EntityFr.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\Gnom-O-Chat.EntityFr.pdb
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.xml
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.csprojResolveAssemblyReference.cache
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.pdb

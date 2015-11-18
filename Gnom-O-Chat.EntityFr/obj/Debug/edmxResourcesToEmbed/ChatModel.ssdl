@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище C18_sdiModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Chat">
+    <Key>
+      <PropertyRef Name="IdChat" />
+    </Key>
+    <Property Name="IdChat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChatTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsWhisper" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatConnections">
+    <Key>
+      <PropertyRef Name="IdConnection" />
+    </Key>
+    <Property Name="IdConnection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConnectionDate" Type="datetime" Nullable="false" />
+    <Property Name="IdUser_ChatUser" Type="int" />
+    <Property Name="IsLogin" Type="bit" />
+  </EntityType>
+  <EntityType Name="ChatMembership">
+    <Key>
+      <PropertyRef Name="IdChatMembership" />
+    </Key>
+    <Property Name="IdChat_Chat" Type="int" Nullable="false" />
+    <Property Name="IdUser_ChatUser" Type="int" Nullable="false" />
+    <Property Name="IdChatMembership" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatUser">
+    <Key>
+      <PropertyRef Name="IdUser" />
+    </Key>
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsOnline" Type="bit" Nullable="false" />
+    <Property Name="IsMod" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="IdHistory" />
+    </Key>
+    <Property Name="IdHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUser_ChatUser" Type="int" />
+    <Property Name="IdChat_Chat" Type="int" />
+    <Property Name="Message" Type="nvarchar" MaxLength="600" Nullable="false" />
+    <Property Name="MessageDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ChatConne__IdUse__69C6B1F5">
+    <End Role="ChatUser" Type="Self.ChatUser" Multiplicity="0..1" />
+    <End Role="ChatConnections" Type="Self.ChatConnections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatUser">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="ChatConnections">
+        <PropertyRef Name="IdUser_ChatUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatMembe__IdCha__6D9742D9">
+    <End Role="Chat" Type="Self.Chat" Multiplicity="1" />
+    <End Role="ChatMembership" Type="Self.ChatMembership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chat">
+        <PropertyRef Name="IdChat" />
+      </Principal>
+      <Dependent Role="ChatMembership">
+        <PropertyRef Name="IdChat_Chat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChatMembe__IdUse__6E8B6712">
+    <End Role="ChatUser" Type="Self.ChatUser" Multiplicity="1" />
+    <End Role="ChatMembership" Type="Self.ChatMembership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatUser">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="ChatMembership">
+        <PropertyRef Name="IdUser_ChatUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__History__IdChat___725BF7F6">
+    <End Role="Chat" Type="Self.Chat" Multiplicity="0..1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chat">
+        <PropertyRef Name="IdChat" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="IdChat_Chat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__History__IdUser___7167D3BD">
+    <End Role="ChatUser" Type="Self.ChatUser" Multiplicity="0..1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatUser">
+        <PropertyRef Name="IdUser" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="IdUser_ChatUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CreateNormalUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Login" Type="nvarchar" Mode="In" />
+    <Parameter Name="Pass" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertIntoMainNewBeeUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="Хранилище C18_sdiModelContainer">
+    <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatConnections" EntityType="Self.ChatConnections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatMembership" EntityType="Self.ChatMembership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatUser" EntityType="Self.ChatUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChatConne__IdUse__69C6B1F5" Association="Self.FK__ChatConne__IdUse__69C6B1F5">
+      <End Role="ChatUser" EntitySet="ChatUser" />
+      <End Role="ChatConnections" EntitySet="ChatConnections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatMembe__IdCha__6D9742D9" Association="Self.FK__ChatMembe__IdCha__6D9742D9">
+      <End Role="Chat" EntitySet="Chat" />
+      <End Role="ChatMembership" EntitySet="ChatMembership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChatMembe__IdUse__6E8B6712" Association="Self.FK__ChatMembe__IdUse__6E8B6712">
+      <End Role="ChatUser" EntitySet="ChatUser" />
+      <End Role="ChatMembership" EntitySet="ChatMembership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__History__IdChat___725BF7F6" Association="Self.FK__History__IdChat___725BF7F6">
+      <End Role="Chat" EntitySet="Chat" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK__History__IdUser___7167D3BD" Association="Self.FK__History__IdUser___7167D3BD">
+      <End Role="ChatUser" EntitySet="ChatUser" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
