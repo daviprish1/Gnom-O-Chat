@@ -17,8 +17,16 @@
             
         </ToolBar>-->
         <Menu Name="WindowMenu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12">
-            <MenuItem Header="_FMenuItem" Height="26"></MenuItem>
-            <MenuItem Header="_SMenuItem" Height="26"></MenuItem>
+            <MenuItem Header="_User" Height="26">
+                <MenuItem Header="Change Pass" />
+                <Separator />
+                <MenuItem Header="Logout" Click="MenuItem_Click_LogOut"/>
+                <MenuItem Header="Exit" Click="MenuItem_Click_Close"/>
+            </MenuItem>
+            <MenuItem Header="_ChatHistory" Height="26">
+                <MenuItem Header="LoginHistory"/>
+                <MenuItem Header="MessageHistory" />
+            </MenuItem>
         </Menu>
         
         <TabControl x:Name="tcChatTabs" TabStripPlacement="Top" Grid.Row="1" Grid.RowSpan="2"/>

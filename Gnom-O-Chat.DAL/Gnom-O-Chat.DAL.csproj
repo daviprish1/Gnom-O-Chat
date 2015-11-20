@@ -55,6 +55,10 @@
       <Project>{c1994bf8-e204-4af7-8b55-3cdfffeee613}</Project>
       <Name>Gnom-O-Chat.EntityFr</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gnom-O-Chat.Repository\Gnom-O-Chat.Repository.csproj">
+      <Project>{b8ff91c9-4a9e-45d3-ab2e-ae0b4b898c99}</Project>
+      <Name>Gnom-O-Chat.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

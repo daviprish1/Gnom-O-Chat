@@ -10,3 +10,17 @@ C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.DAL\bin\
 C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.EntityFr.pdb
 C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.xml
 C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.DAL.dll.config
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.DAL.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.DAL.pdb
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.EntityFr.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.EntityFr.pdb
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.xml
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.csprojResolveAssemblyReference.cache
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.pdb
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.Repository.dll
+C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.Repository.pdb

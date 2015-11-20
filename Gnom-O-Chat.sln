@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnom-O-Chat.EntityFr", "Gno
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnom-O-Chat.DAL", "Gnom-O-Chat.DAL\Gnom-O-Chat.DAL.csproj", "{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnom-O-Chat.Repository", "Gnom-O-Chat.Repository\Gnom-O-Chat.Repository.csproj", "{B8FF91C9-4A9E-45D3-AB2E-AE0B4B898C99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46E9F0D5-B8B1-451D-A1D4-0E2FBA3CF565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8FF91C9-4A9E-45D3-AB2E-AE0B4B898C99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8FF91C9-4A9E-45D3-AB2E-AE0B4B898C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8FF91C9-4A9E-45D3-AB2E-AE0B4B898C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8FF91C9-4A9E-45D3-AB2E-AE0B4B898C99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

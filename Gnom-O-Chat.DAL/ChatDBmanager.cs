@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Gnom_O_Chat.EntityFr;
+using Gnom_O_Chat.Repository;
 
 namespace Gnom_O_Chat.DAL
 {
@@ -97,6 +98,69 @@ namespace Gnom_O_Chat.DAL
         {
             user.IsOnline = itLogin;
             this._context.SaveChanges();
+        }
+
+
+        public void AddMessageToHistory(ChatUser user, string chatTitle, string msg)
+        {
+            History history = new History();
+
+            var chat = (from c in this._context.Chat
+                        where c.ChatTitle == chatTitle
+                        select c).First();
+
+            history.IdChat_Chat = chat.IdChat;
+            history.IdUser_ChatUser = user.IdUser;
+            history.Message = msg;
+            history.MessageDate = DateTime.Now;
+
+            this._context.History.Add(history);
+            this._context.SaveChanges();
+        }
+
+        public Chat GetChatFromTitle(string title)
+        {
+            var curChat = (from c in this._context.Chat
+                           where c.ChatTitle == title
+                           select c).First();
+
+            return curChat;
+        }
+
+        public int GetLastMessageId(string chatTitle)
+        {
+            int id = (from h in this._context.History
+                      join c in this._context.Chat on h.IdChat_Chat equals c.IdChat
+                      where c.ChatTitle == chatTitle
+                      select h.IdHistory).Max();
+
+            return id;
+        }
+
+        public List<NewMessage> GetNewMessages(int lastMsgId, string chatName)
+        {
+            List<NewMessage> newMessages = new List<NewMessage>();
+
+            var newmsgs = from h in this._context.History
+                          join c in this._context.Chat on h.IdChat_Chat equals c.IdChat
+                          join u in this._context.ChatUser on h.IdUser_ChatUser equals u.IdUser
+                          where h.IdHistory > lastMsgId && c.ChatTitle == chatName
+                          select new { Username = u.UserName, Message = h.Message, MsgDate = h.MessageDate,
+                              MsgId = h.IdHistory, ChatName = c.ChatTitle};
+
+            foreach(var msg in newmsgs)
+            {
+                NewMessage nm = new NewMessage();
+                nm.userName = msg.Username;
+                nm.message = msg.Message;
+                nm.messageDate = msg.MsgDate;
+                nm.messageId = msg.MsgId;
+                nm.chatTitle = msg.ChatName;
+
+                newMessages.Add(nm);
+            }
+
+            return newMessages;
         }
     }
 }

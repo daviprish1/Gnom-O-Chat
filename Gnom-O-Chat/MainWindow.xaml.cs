@@ -14,9 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.Windows.Input;
+using System.Threading;
 
 using Gnom_O_Chat.DAL;
 using Gnom_O_Chat.EntityFr;
+using Gnom_O_Chat.Repository;
 
 namespace Gnom_O_Chat.UI
 {
@@ -35,6 +37,7 @@ namespace Gnom_O_Chat.UI
             InitializeComponent();
 
             this._dal = new ChatDBmanager();
+            getchatmsgs += GetNewChatMessages;
         }
 
         void btnClose_Click(object sender, RoutedEventArgs e)
@@ -86,13 +89,17 @@ namespace Gnom_O_Chat.UI
             rtbOutput.BorderBrush = Brushes.Black;
             rtbOutput.IsReadOnly = true;
             rtbOutput.SetValue(Grid.RowProperty, 0);
+            rtbOutput.Tag = this._dal.GetLastMessageId(ChatTitle);
 
             tabGrid.Children.Add(tbInput);
             tabGrid.Children.Add(rtbOutput);
 
+            Chat chatBound = this._dal.GetChatFromTitle(ChatTitle);
+
             TabItem ti = new TabItem();
             ti.Header = stHeader;
             ti.Content = tabGrid;
+            ti.Tag = chatBound;
 
             this.tcChatTabs.Items.Add(ti);
             ((TabItem)this.tcChatTabs.Items[this.tcChatTabs.Items.Count - 1]).Focus();
@@ -103,6 +110,26 @@ namespace Gnom_O_Chat.UI
             TextBox tb = sender as TextBox;
             if (e.Key == Key.Return && Keyboard.IsKeyDown(Key.LeftCtrl))
             {
+                string msg = tb.Text.Trim();
+                if (string.IsNullOrEmpty(msg))
+                {
+                    tb.Text = "";
+                    return;
+                }
+
+                DependencyObject parentGrid = tb.Parent;
+                DependencyObject gridParentTab = ((Grid)parentGrid).Parent;
+                TabItem ti = gridParentTab as TabItem;
+
+                string chatTitle = ((TextBlock)((StackPanel)ti.Header).Children[0]).Text;
+                try
+                {
+                    this._dal.AddMessageToHistory(this.curUser, chatTitle, tb.Text);
+                }
+                catch(Exception ex)
+                {
+                    ShowException(ex);
+                }
                 tb.Text = "";
             }
         }
@@ -113,9 +140,19 @@ namespace Gnom_O_Chat.UI
             RegFormChild.ShowDialog();
             if (this.curUser != null)
             {
-                this._dal.AddConnection(this.curUser.IdUser, true);
-                this._dal.SetUserOnlineOffline(this.curUser, true);
-                CreateNewTab("Chat");
+                try
+                {
+                    this._dal.AddConnection(this.curUser.IdUser, true);
+                    this._dal.SetUserOnlineOffline(this.curUser, true);
+                }
+                catch(Exception ex)
+                {
+                    ShowException(ex);
+                }
+
+                CreateNewTab("MainChat");
+
+                this.PeriodicChatUpdate();
             }
         }
 
@@ -123,9 +160,100 @@ namespace Gnom_O_Chat.UI
         {
             if (this.curUser != null)
             {
-                this._dal.AddConnection(this.curUser.IdUser, false);
-                this._dal.SetUserOnlineOffline(this.curUser, false);
+                try
+                {
+                    this._dal.AddConnection(this.curUser.IdUser, false);
+                    this._dal.SetUserOnlineOffline(this.curUser, false);
+                }
+                catch(Exception ex)
+                {
+                    ShowException(ex);
+                }
             }
+        }
+
+        private Object thisLock = new Object();
+        public delegate void getchatmsgsDel();
+        public getchatmsgsDel getchatmsgs;
+
+        public async void PeriodicChatUpdate()
+        {
+            while (true)
+            {
+                await Task.Run(() => getchatmsgs);
+                //await this.Dispatcher.BeginInvoke(getchatmsgs, null);
+            }
+        }
+
+        private async void GetNewChatMessages()
+        {
+            await Task.Run(() =>
+                {
+                    lock (thisLock)
+                    {
+                        Thread.Sleep(1500);
+
+                        if (this.tcChatTabs.Items.Count == 0)
+                        {
+                            return;
+                        }
+                        foreach (var item in this.tcChatTabs.Items)
+                        {
+                            TabItem ti = item as TabItem;
+                            string chatTitle = ((TextBlock)((StackPanel)ti.Header).Children[0]).Text;
+                            try
+                            {
+                                List<NewMessage> msgs = this._dal.GetNewMessages(((int)ti.Tag), chatTitle);
+
+                                foreach (var msg in msgs)
+                                {
+                                    StringBuilder sb = new StringBuilder();
+                                    sb.Append("[");
+                                    sb.AppendFormat("{0}/{1}/{2}  {3}:{4}:{5}", msg.messageDate.Day, msg.messageDate.Month, msg.messageDate.Year,
+                                        msg.messageDate.Hour, msg.messageDate.Minute, msg.messageDate.Second);
+                                    sb.Append("]");
+                                    sb.AppendFormat("{0}: {1}", msg.userName, msg.message);
+                                    sb.AppendLine();
+
+                                    var richcontrol = ((RichTextBox)((Grid)ti.Content).Children[1]);
+                                    if (richcontrol != null)
+                                    {
+                                        Dispatcher.Invoke(() => richcontrol.AppendText(sb.ToString()));
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ShowException(ex);
+                            }
+                        }
+                    }
+                });
+        }//private void GetNewChatMessages()
+
+
+        private void ShowException(Exception ex)
+        {
+            StringBuilder sb = new StringBuilder(ex.Message);
+            Exception inner = ex.InnerException;
+            while (inner != null)
+            {
+                sb.Append("\n");
+                sb.Append(inner.Message);
+                inner = inner.InnerException;
+            }
+            MessageBox.Show(sb.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void MenuItem_Click_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
+        private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
+        {
+            this.curUser = null;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\denis\Documents\Visual Studio 2013\Projects\ChatUI\Gnom-O-Chat.EntityFr\ChatModel.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\ChatModel.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

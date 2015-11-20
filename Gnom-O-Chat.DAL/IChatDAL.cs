@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Gnom_O_Chat.EntityFr;
+using Gnom_O_Chat.Repository;
 
 namespace Gnom_O_Chat.DAL
 {
@@ -18,5 +19,12 @@ namespace Gnom_O_Chat.DAL
         int GetMainChatIdx();
 
         void SetUserOnlineOffline(ChatUser user, bool itLogin);
+        void AddMessageToHistory(ChatUser user, string chatTitle, string msg);
+
+        Chat GetChatFromTitle(string title);
+
+        int GetLastMessageId(string chatTitle);
+
+        List<NewMessage> GetNewMessages(int lastMsgId, string chatName);
     }
 }
