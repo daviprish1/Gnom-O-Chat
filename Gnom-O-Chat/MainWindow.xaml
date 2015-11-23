@@ -12,7 +12,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--<ToolBar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             
         </ToolBar>-->
@@ -23,24 +23,24 @@
                 <MenuItem Header="Logout" Click="MenuItem_Click_LogOut"/>
                 <MenuItem Header="Exit" Click="MenuItem_Click_Close"/>
             </MenuItem>
-            <MenuItem Header="_ChatHistory" Height="26">
-                <MenuItem Header="LoginHistory"/>
-                <MenuItem Header="MessageHistory" />
+            <MenuItem Header="_Chat" Height="26">
+                <MenuItem Header="Add To Chat"  Click="AddToChat_Click"/>
+                <MenuItem Header="Leave From Chat"  Click="LeaveFromChat_Click"/>
             </MenuItem>
-        </Menu>
-        
-        <TabControl x:Name="tcChatTabs" TabStripPlacement="Top" Grid.Row="1" Grid.RowSpan="2"/>
-        
-        <!--<RichTextBox Name="rtbOutput" Grid.Row="1" Margin="3" BorderThickness="1" BorderBrush="Black" IsReadOnly="True"/>-->
-        
-        <!--<Grid Grid.Row="2" Name="InputGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
+            <MenuItem Header="ChatHistory" Height="26">
+                <MenuItem Header="LoginHistory" Click="btnLoginHistory"/>
+                <MenuItem Header="MessageHistory"  Click="btnMessageHistory"/>
+            </MenuItem>
 
-            --><!--<TextBox Name="tbInput" Margin="3" BorderThickness="2" MaxLength="299" TextWrapping="Wrap" AcceptsReturn="True"/>--><!--
-        </Grid>-->
-        <TreeView Grid.Column="1" Name="tvChatView"  Grid.Row="1" Margin="5"/>
+        </Menu>
+
+        <TabControl x:Name="tcChatTabs" TabStripPlacement="Top" Grid.Row="1" Grid.RowSpan="2"/>
+
+
+        <TreeView Grid.Column="1" Name="tvChatView"  Grid.Row="1" Margin="5" SelectedItemChanged="tvChatView_SelectedItemChanged"/>
+
+        <TextBox Grid.Column="1" Grid.Row="2" Name="tbNewChatName" Width="160" Height="20" Margin="10,10,80,120"/>
+        <Button Grid.Column="1" Grid.Row="2"  Content="AddNew" Name="btnAddNewChat" Width="60" Height="20"  Margin="175,10,15,120" Click="btnAddNewChat_Click"/>
+        <Button Grid.Column="1" Grid.Row="2"  Content="Refresh" Name="btnRefreshChat" Height="30" Margin="10,35,15,85" Click="btnRefreshChat_Click"/>
     </Grid>
 </Window>

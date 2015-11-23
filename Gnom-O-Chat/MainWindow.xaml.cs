@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.Windows.Input;
-using System.Threading;
+//using System.Threading;
+using Forms = System.Windows.Forms;
 
 using Gnom_O_Chat.DAL;
 using Gnom_O_Chat.EntityFr;
@@ -31,14 +32,62 @@ namespace Gnom_O_Chat.UI
         private IChatDAL _dal;
         public ChatUser curUser
         { get; set; }
+        private Forms.Timer chatUpdateTimer = new Forms.Timer();
 
         public MainWindow()
         {
             InitializeComponent();
 
             this._dal = new ChatDBmanager();
-            getchatmsgs += GetNewChatMessages;
+
+            chatUpdateTimer.Interval = 2000;
+            chatUpdateTimer.Tick += chatUpdateTimer_Tick;
+            //getchatmsgs += GetNewChatMessages;
+            
         }
+
+        void chatUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.tcChatTabs.Items.Count == 0)
+            {
+                return;
+            }
+            foreach (var item in this.tcChatTabs.Items)
+            {
+                TabItem ti = item as TabItem;
+                string chatTitle = ((TextBlock)((StackPanel)ti.Header).Children[0]).Text;
+                try
+                {
+                    var richcontrol = ((RichTextBox)((Grid)ti.Content).Children[1]);
+                    Chat tabtag = ti.Tag as Chat;
+                    List<MessageInfo> msgs = this._dal.GetNewMessages((int)richcontrol.Tag, chatTitle);
+
+                    foreach (var msg in msgs)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("[");
+                        sb.AppendFormat("{0}/{1}/{2}  {3}:{4}:{5}", msg.messageDate.Day, msg.messageDate.Month, msg.messageDate.Year,
+                            msg.messageDate.Hour, msg.messageDate.Minute, msg.messageDate.Second);
+                        sb.Append("]");
+                        sb.AppendFormat("{0}: {1}", msg.userName, msg.message);
+                        sb.AppendFormat("{0}", Environment.NewLine);
+
+                        //var richcontrol = ((RichTextBox)((Grid)ti.Content).Children[1]);
+                        if (richcontrol != null)
+                        {
+                            richcontrol.AppendText(sb.ToString());
+                            richcontrol.Tag = this._dal.GetLastMessageId(chatTitle);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowException(ex);
+                }
+            }
+        }
+
+
 
         void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -144,6 +193,8 @@ namespace Gnom_O_Chat.UI
                 {
                     this._dal.AddConnection(this.curUser.IdUser, true);
                     this._dal.SetUserOnlineOffline(this.curUser, true);
+                    this.SetTVChatViewDataSource();
+
                 }
                 catch(Exception ex)
                 {
@@ -152,7 +203,8 @@ namespace Gnom_O_Chat.UI
 
                 CreateNewTab("MainChat");
 
-                this.PeriodicChatUpdate();
+                this.chatUpdateTimer.Start();
+                //this.PeriodicChatUpdate();
             }
         }
 
@@ -172,7 +224,21 @@ namespace Gnom_O_Chat.UI
             }
         }
 
-        private Object thisLock = new Object();
+        private void SetTVChatViewDataSource()
+        {        
+            try
+            {
+                this.tvChatView.ItemsSource = null;
+                List<string> source = this._dal.GetListOfUserChats(this.curUser);
+                this.tvChatView.ItemsSource = source;
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+
+        /*private Object thisLock = new Object();
         public delegate void getchatmsgsDel();
         public getchatmsgsDel getchatmsgs;
 
@@ -229,7 +295,7 @@ namespace Gnom_O_Chat.UI
                         }
                     }
                 });
-        }//private void GetNewChatMessages()
+        }//private void GetNewChatMessages()*/
 
 
         private void ShowException(Exception ex)
@@ -254,6 +320,68 @@ namespace Gnom_O_Chat.UI
         private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
         {
             this.curUser = null;
+        }
+
+        private void btnLoginHistory(object sender, RoutedEventArgs e)
+        {
+            HistoryForm hiform = new HistoryForm(this, this._dal, HistoryFormStatus.LoginHistory);
+            hiform.Show();
+        }
+
+        private void btnMessageHistory(object sender, RoutedEventArgs e)
+        {
+            HistoryForm hiform = new HistoryForm(this, this._dal, HistoryFormStatus.MessageHistory);
+            hiform.Show();
+        }
+
+        private void btnAddNewChat_Click(object sender, RoutedEventArgs e)
+        {
+            string chatname = this.tbNewChatName.Text.Trim();
+            if(chatname.Length < 3)
+            {
+                MessageBox.Show("ChatName to short!");
+                this.tbNewChatName.Text = "";
+                return;
+            }
+
+            try
+            {
+                this._dal.AddNewChat(chatname);
+                Chat newChat = this._dal.GetChatFromTitle(chatname);
+                this._dal.AddUserToChat(this.curUser, newChat.IdChat);
+                this.CreateNewTab(chatname);
+                this.tbNewChatName.Text = "";
+            }
+            catch(Exception ex)
+            {
+                this.ShowException(ex);
+            }
+        }
+
+ 
+        private void AddToChat_Click(object sender, RoutedEventArgs e)
+        {
+            AddToChatForm child = new AddToChatForm(this.curUser, this._dal);
+            child.ShowDialog();
+        }
+
+        private void btnRefreshChat_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetTVChatViewDataSource();
+        }
+
+        private void tvChatView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (this.tvChatView.SelectedItem == null)
+                return;
+
+            this.CreateNewTab(this.tvChatView.SelectedItem.ToString());
+        }
+
+        private void LeaveFromChat_Click(object sender, RoutedEventArgs e)
+        {
+            LeaveFromChatForm child = new LeaveFromChatForm(this.curUser, this._dal);
+            child.ShowDialog();
         }
     }
 }

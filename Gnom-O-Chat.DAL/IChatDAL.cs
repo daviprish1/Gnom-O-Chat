@@ -25,6 +25,39 @@ namespace Gnom_O_Chat.DAL
 
         int GetLastMessageId(string chatTitle);
 
-        List<NewMessage> GetNewMessages(int lastMsgId, string chatName);
+        List<MessageInfo> GetNewMessages(int lastMsgId, string chatName);
+
+        List<string> GetListOfChats();
+        List<string> GetListOfUsers();
+
+        List<ConnectionInfo> GetConnectionInfoForAllUsers();
+
+        List<ConnectionInfo> GetConnectionInfoForAllUsersBetweenDates(DateTime first, DateTime second);
+
+        List<ConnectionInfo> GetConnectionInfoForSomeUser(string username);
+
+        List<ConnectionInfo> GetConnectionInfoForSomeUserBetweenDates(string username, DateTime first, DateTime second);
+
+        List<MessageInfo> GetMessageHistoryForAllUsers();
+
+        List<MessageInfo> GetMessageHistoryForAllUsersBetweenDates(DateTime first, DateTime second);
+
+        List<MessageInfo> GetMessageHistoryForSpecifiedChat(string chatname);
+
+        List<MessageInfo> GetMessageHistoryForSpecifiedChatBetweenDates(string chatname, DateTime first, DateTime second);
+
+        List<MessageInfo> GetMessageHistoryForSpecifiedChatAndUser(string chatname, string username);
+
+        List<MessageInfo> GetMessageHistoryForSpecifiedChatAndUserBetweenDates(string chatname, string username, DateTime first, DateTime second);
+
+        void AddNewChat(string name);
+
+        List<string> GetListOfUserChats(ChatUser user);
+
+        List<string> GetListOfUsersWhatCanBeAddedToChat(string chattitle, ChatUser user);
+
+        ChatUser GetUserByAcc(string username);
+
+        void LeaveFromMembership(string chatname, ChatUser user);
     }
 }

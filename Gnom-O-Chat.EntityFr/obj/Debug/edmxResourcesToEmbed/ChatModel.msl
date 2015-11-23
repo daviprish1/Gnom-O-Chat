@@ -51,7 +51,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="CreateNormalUser" FunctionName="Хранилище C18_sdiModel.CreateNormalUser" />
-    <FunctionImportMapping FunctionImportName="InsertIntoMainNewBeeUser" FunctionName="Хранилище C18_sdiModel.InsertIntoMainNewBeeUser" />
   </EntityContainerMapping>
 </Mapping>

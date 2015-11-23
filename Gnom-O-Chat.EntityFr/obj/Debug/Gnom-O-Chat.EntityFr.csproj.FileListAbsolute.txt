@@ -18,3 +18,13 @@ C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Ent
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.csprojResolveAssemblyReference.cache
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.dll
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\Gnom-O-Chat.EntityFr.dll.config
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\Gnom-O-Chat.EntityFr.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\Gnom-O-Chat.EntityFr.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.xml
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.csprojResolveAssemblyReference.cache
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.EntityFr\obj\Debug\Gnom-O-Chat.EntityFr.pdb

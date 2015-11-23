@@ -24,3 +24,17 @@ C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.pdb
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.Repository.dll
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.Repository.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.csprojResolveAssemblyReference.cache
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\obj\Debug\Gnom-O-Chat.DAL.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.DAL.dll.config
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.DAL.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.DAL.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.EntityFr.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.Repository.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.EntityFr.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\Gnom-O-Chat.Repository.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.xml
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.DAL\bin\Debug\EntityFramework.SqlServer.xml

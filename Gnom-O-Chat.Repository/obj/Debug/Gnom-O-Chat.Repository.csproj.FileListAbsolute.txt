@@ -3,3 +3,8 @@ C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Rep
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\obj\Debug\Gnom-O-Chat.Repository.csprojResolveAssemblyReference.cache
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\obj\Debug\Gnom-O-Chat.Repository.dll
 C:\Users\denis\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\obj\Debug\Gnom-O-Chat.Repository.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\bin\Debug\Gnom-O-Chat.Repository.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\bin\Debug\Gnom-O-Chat.Repository.pdb
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\obj\Debug\Gnom-O-Chat.Repository.csprojResolveAssemblyReference.cache
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\obj\Debug\Gnom-O-Chat.Repository.dll
+C:\Users\user.STEP\Documents\Visual Studio 2013\Projects\Gnom-O-Chat\Gnom-O-Chat.Repository\obj\Debug\Gnom-O-Chat.Repository.pdb

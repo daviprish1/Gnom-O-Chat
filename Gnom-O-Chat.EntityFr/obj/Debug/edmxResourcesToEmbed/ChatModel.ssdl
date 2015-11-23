@@ -105,13 +105,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="CreateNormalUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Login" Type="nvarchar" Mode="In" />
-    <Parameter Name="Pass" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="InsertIntoMainNewBeeUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userId" Type="int" Mode="In" />
-  </Function>
   <EntityContainer Name="Хранилище C18_sdiModelContainer">
     <EntitySet Name="Chat" EntityType="Self.Chat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChatConnections" EntityType="Self.ChatConnections" Schema="dbo" store:Type="Tables" />

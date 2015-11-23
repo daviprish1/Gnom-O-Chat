@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gnom_O_Chat.Repository
 {
-    public class NewMessage
+    public class MessageInfo
     {
         public string userName
         { get; set; }

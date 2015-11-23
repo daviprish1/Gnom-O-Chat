@@ -66,9 +66,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddToChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddToChatForm.Designer.cs">
+      <DependentUpon>AddToChatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HistoryForm.Designer.cs">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveFromChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveFromChatForm.Designer.cs">
+      <DependentUpon>LeaveFromChatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LogRegForm.cs">
       <SubType>Form</SubType>
@@ -95,6 +113,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="AddToChatForm.resx">
+      <DependentUpon>AddToChatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryForm.resx">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveFromChatForm.resx">
+      <DependentUpon>LeaveFromChatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogRegForm.resx">
       <DependentUpon>LogRegForm.cs</DependentUpon>
     </EmbeddedResource>
