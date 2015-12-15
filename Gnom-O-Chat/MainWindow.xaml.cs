@@ -20,6 +20,8 @@ using Forms = System.Windows.Forms;
 using Gnom_O_Chat.DAL;
 using Gnom_O_Chat.EntityFr;
 using Gnom_O_Chat.Repository;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Gnom_O_Chat.UI
 {
@@ -32,7 +34,19 @@ namespace Gnom_O_Chat.UI
         private IChatDAL _dal;
         public ChatUser curUser
         { get; set; }
+
+        //DELEGATE FOR Threading.Timer
+        private TimerCallback tcb;
+
+        //DELEGATE FOR FUNC WHAT UPD THE CHAT
+        private delegate void voidDel();
+        private voidDel updDel;
+
+        //SYNC TIMER, RIGHT NOW NO USE
         private Forms.Timer chatUpdateTimer = new Forms.Timer();
+
+        //Threading.Timer
+        private Timer ChatUpdateThreadTimer; 
 
         public MainWindow()
         {
@@ -42,11 +56,22 @@ namespace Gnom_O_Chat.UI
 
             chatUpdateTimer.Interval = 2000;
             chatUpdateTimer.Tick += chatUpdateTimer_Tick;
-            //getchatmsgs += GetNewChatMessages;
-            
+
+            this.tcb = TimerCllb;
+            this.updDel = ChatUpdate;           
+        }
+
+        private void TimerCllb(object state)
+        {
+            Dispatcher.Invoke(updDel);
         }
 
         void chatUpdateTimer_Tick(object sender, EventArgs e)
+        {
+            ChatUpdate();
+        }
+
+        private void ChatUpdate()
         {
             if (this.tcChatTabs.Items.Count == 0)
             {
@@ -203,8 +228,10 @@ namespace Gnom_O_Chat.UI
 
                 CreateNewTab("MainChat");
 
-                this.chatUpdateTimer.Start();
+                //this.chatUpdateTimer.Start();
                 //this.PeriodicChatUpdate();
+               
+                ChatUpdateThreadTimer = new Timer(tcb, null, 1000, 1000);
             }
         }
 
@@ -222,6 +249,7 @@ namespace Gnom_O_Chat.UI
                     ShowException(ex);
                 }
             }
+            ChatUpdateThreadTimer.Dispose();
         }
 
         private void SetTVChatViewDataSource()
@@ -237,65 +265,7 @@ namespace Gnom_O_Chat.UI
                 ShowException(ex);
             }
         }
-
-        /*private Object thisLock = new Object();
-        public delegate void getchatmsgsDel();
-        public getchatmsgsDel getchatmsgs;
-
-        public async void PeriodicChatUpdate()
-        {
-            while (true)
-            {
-                await Task.Run(() => getchatmsgs);
-                //await this.Dispatcher.BeginInvoke(getchatmsgs, null);
-            }
-        }
-
-        private async void GetNewChatMessages()
-        {
-            await Task.Run(() =>
-                {
-                    lock (thisLock)
-                    {
-                        Thread.Sleep(1500);
-
-                        if (this.tcChatTabs.Items.Count == 0)
-                        {
-                            return;
-                        }
-                        foreach (var item in this.tcChatTabs.Items)
-                        {
-                            TabItem ti = item as TabItem;
-                            string chatTitle = ((TextBlock)((StackPanel)ti.Header).Children[0]).Text;
-                            try
-                            {
-                                List<NewMessage> msgs = this._dal.GetNewMessages(((int)ti.Tag), chatTitle);
-
-                                foreach (var msg in msgs)
-                                {
-                                    StringBuilder sb = new StringBuilder();
-                                    sb.Append("[");
-                                    sb.AppendFormat("{0}/{1}/{2}  {3}:{4}:{5}", msg.messageDate.Day, msg.messageDate.Month, msg.messageDate.Year,
-                                        msg.messageDate.Hour, msg.messageDate.Minute, msg.messageDate.Second);
-                                    sb.Append("]");
-                                    sb.AppendFormat("{0}: {1}", msg.userName, msg.message);
-                                    sb.AppendLine();
-
-                                    var richcontrol = ((RichTextBox)((Grid)ti.Content).Children[1]);
-                                    if (richcontrol != null)
-                                    {
-                                        Dispatcher.Invoke(() => richcontrol.AppendText(sb.ToString()));
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                ShowException(ex);
-                            }
-                        }
-                    }
-                });
-        }//private void GetNewChatMessages()*/
+       
 
 
         private void ShowException(Exception ex)
